@@ -1,7 +1,7 @@
 <template>
-  <div class="hello">
+  <div class="blood-routine">
     <!-- 1.初始化eCharts 需要一个有宽高的 盒子-->
-    <div ref='mapbox' style="height: 400px; width: 600px;"></div>
+    <div ref='mapbox' style="height: 100%; width: 100%;"></div>
   </div>
 </template>
 
@@ -75,11 +75,10 @@
   }
 
   export default {
-    name: 'HelloWorld',
+    name: 'LineChart',
     mounted() {
       // 3.基于准备好的dom，初始化echarts实例
-      var myChart = echarts.init(this.$ref.mapbox);
-
+      let myChart = echarts.init(this.$refs.mapbox);
 
       // 5.使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
