@@ -22,14 +22,21 @@
                 <div class="panel line">
                   <h2>折线图</h2>
                   <div class="chart">
-                    <line-chart/>
+                    <line-chart />
                   </div>
                   <div class="pannel-foot"></div>
                 </div>
                 <div class="panel pie">
                   <h2>饼形图</h2>
                   <div class="chart">
-                    <pie-chart/>
+                    <pie-chart />
+                  </div>
+                  <div class="pannel-foot"></div>
+                </div>
+                <div class="panel bar">
+                  <h2>柱形图复用</h2>
+                  <div class="chart">
+                    <bar-chart-multi-use :textlink='barlink' :xname='xname' :yname='yname' :bardata='bardata' />
                   </div>
                   <div class="pannel-foot"></div>
                 </div>
@@ -59,21 +66,28 @@
                 <div class="panel bar">
                   <h2>美化柱形图</h2>
                   <div class="chart">
-                    <bar-chart-update/>
+                    <bar-chart-update />
                   </div>
                   <div class="pannel-foot"></div>
                 </div>
                 <div class="panel line">
                   <h2>美化折线图</h2>
                   <div class="chart">
-                    <line-chart-update/>
+                    <line-chart-update />
                   </div>
                   <div class="pannel-foot"></div>
                 </div>
                 <div class="panel pie">
                   <h2>美化饼形图</h2>
                   <div class="chart">
-                    <pie-chart-update/>
+                    <pie-chart-update />
+                  </div>
+                  <div class="pannel-foot"></div>
+                </div>
+                <div class="panel bar">
+                  <h2>柱形图复用</h2>
+                  <div class="chart">
+                    <bar-chart-multi-use :textlink='barlink' :xname='xname' :yname='yname' :bardata='bardata' />
                   </div>
                   <div class="pannel-foot"></div>
                 </div>
@@ -92,6 +106,7 @@
   import LineChartUpdate from './eCharts/LineChartUpdate'
   import BarChart from './eCharts/BarChart'
   import BarChartUpdate from './eCharts/BarChartUpdate'
+  import BarChartMultiUse from './eCharts/BarChartMultiUse'
   import PieChart from './eCharts/PieChart'
   import PieChartUpdate from './eCharts/PieChartUpdate'
   import TopTitle from './TopTitle';
@@ -101,8 +116,8 @@
 
 
   // import { getCurrentDate } from '../assets/utils.js'
-
-
+  // 导入数据
+  import { bardata } from '../data/bar-chart.js'
 
   export default {
     name: 'DashBoard',
@@ -112,7 +127,13 @@
         scaleY: 1,
         marginHorizontal: 0,
         title: '请输入top-title大标题',
-      };
+        // bar图参数
+        barlink: '',
+        xname: 'x轴名',
+        yname: 'y轴名',
+        bardata: bardata
+
+      }
     },
 
     components: {
@@ -120,6 +141,7 @@
       LineChartUpdate,
       BarChart,
       BarChartUpdate,
+      BarChartMultiUse,
       PieChart,
       PieChartUpdate,
       TopTitle,
@@ -183,7 +205,7 @@
     /* 溢出隐藏 */
     overflow: hidden;
 
-    /* 设置绝对位置后，就和上级标签没有关系了 */
+    /* 父相子绝 ：设置绝对位置后，就和上级标签没有关系了，*/
     /* position: absolute; */
     /* top: 500px; */
     /* left: 100px; */
